@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+    <title>M&D Hotels</title>
+
+    <style>
+        @font-face {
+            font-family: Lora;
+            src: url(Lora.ttf);
+        }
+
+        body {
+            margin: 0;
+        }
+
+        #menu {
+            background-color: black;
+            padding: 12px
+        }
+
+        .m,
+        .and,
+        .d,
+        .h,
+        .o,
+        .t,
+        .e,
+        .l,
+        .s {
+            float: left;
+            cursor: pointer;
+            height: 35px;
+            margin-top: 15px;
+        }
+
+        .m {
+            margin-left: 20px;
+        }
+
+        .h {
+            margin-left: 15px;
+            vertical-align: auto;
+        }
+
+        .logo {
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+            height: 75px;
+            margin: 0px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            padding-right: 100px;
+        }
+
+        li {
+            display: inline-block;
+            padding: 20px 50px;
+            margin-top: 5px;
+            transition: transform .2s;
+        }
+
+        li:hover{
+            transform: scale(1.1);
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+            background: 0;
+            border: none;
+            font-family: Lora;
+            font-size: 15px;
+            letter-spacing: 0.1em;
+            color: lightgrey;
+        }
+
+        a:hover {
+            color: white;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            padding: 0;
+            height: 65px;
+            background-color: white;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            z-index: 2;
+        }
+
+        .dropdown-content a {
+            text-decoration: none;
+            display: block;
+            color: lightgrey;
+        }
+
+        .dropdown-content a:hover {
+            color: black;
+        }
+
+        #menu ul li a:hover+ul,
+        #menu ul li ul:hover {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #carouselExampleFade{
+            z-index: -1;
+        }
+
+        .button {
+            border: none;
+            color: white;
+            padding: 10px 40px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 6px;
+            display: inline-block;
+            font-size: 22px;
+            font-family: Lora;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            box-shadow: 2px 5px;
+        }
+
+        .button1 {
+            background-color: white;
+            color: black;
+            border: 1px solid black;
+        }
+
+        .button1:hover {
+            background-color: black;
+            color: white;
+        }
+
+        .doble {
+            font-family: Lora;
+            margin-top: 50px;
+            margin-left: 75px;
+            text-align: left;
+            font-size: 35px;
+        }
+
+        p {
+            font-family: Lora;
+            font-size: 20px;
+            text-align: left;
+            margin-right: 75px;
+        }
+
+        .dobletexto {
+            float: left;
+        }
+
+        .img {
+            -webkit-filter: grayscale(0%);
+            -moz-filter: grayscale(0%);
+            filter: grayscale(0%);
+            transition: all 0.5s ease;
+        }
+
+        .img:hover {
+            -webkit-filter: grayscale(100%);
+            -moz-filter: grayscale(100%);
+            filter: grayscale(100%);
+        }
+
+        .aspectos {
+            font-family: Lora;
+            margin-top: 450px;
+            text-align: center;
+            font-size: 35px;
+        }
+
+        .lista {
+            list-style: none;
+            height: 400px;
+            font-size: 20px;
+            text-align: left;
+            margin: 0px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            padding: 5px 5px 15px 350px
+        }
+
+        li.cba{
+            transition: none;
+        }
+
+        li.cba:hover{
+            transform: none;
+        }
+
+        .footer-distributed {
+            background: black;
+            box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+            box-sizing: border-box;
+            width: 100%;
+            text-align: left;
+            font: bold 16px sans-serif;
+            padding: 35px 50px;
+        }
+
+        .footer-distributed .footer-left,
+        .footer-distributed .footer-center,
+        .footer-distributed .footer-right {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        /* Footer left */
+
+        .footer-distributed .footer-left {
+            width: 40%;
+        }
+
+        /* The company logo */
+
+        .footer-distributed h3 {
+            color: #ffffff;
+            font: normal 36px 'Open Sans', cursive;
+            margin: 0;
+        }
+
+        .footer-distributed h3 span {
+            color: gold;
+        }
+
+        /* Footer links */
+
+        .footer-distributed .footer-links {
+            color: #ffffff;
+            margin: 20px 0 12px;
+            padding: 0;
+        }
+
+        .footer-distributed .footer-links a {
+            display: inline-block;
+            line-height: 1.8;
+            font-weight: 400;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .footer-distributed .footer-company-name {
+            color: white;
+            font-size: 14px;
+            font-weight: normal;
+            margin: 0;
+        }
+
+        /* Footer Center */
+
+        .footer-distributed .footer-center {
+            width: 35%;
+        }
+
+        .footer-distributed .footer-center i {
+            background-color: #33383b;
+            color: #ffffff;
+            font-size: 25px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 42px;
+            margin: 10px 15px;
+            vertical-align: middle;
+        }
+
+        .footer-distributed .footer-center i.fa-envelope {
+            font-size: 17px;
+            line-height: 38px;
+        }
+
+        .footer-distributed .footer-center p {
+            display: inline-block;
+            color: #ffffff;
+            font-weight: 400;
+            vertical-align: middle;
+            margin: 0;
+        }
+
+        .footer-distributed .footer-center p span {
+            display: block;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        .footer-distributed .footer-center p a {
+            color: gold;
+            text-decoration: none;
+        }
+
+        .footer-distributed .footer-links a:before {
+            content: "|";
+            font-weight: 300;
+            font-size: 20px;
+            left: 0;
+            color: #fff;
+            display: inline-block;
+            padding-right: 5px;
+        }
+
+        .footer-distributed .footer-links .link-1:before {
+            content: none;
+        }
+
+        /* Footer Right */
+
+        .footer-distributed .footer-right {
+            width: 20%;
+        }
+
+        .footer-distributed .footer-company-about {
+            line-height: 20px;
+            color: #92999f;
+            font-size: 13px;
+            font-weight: normal;
+            margin: 0;
+        }
+
+        .footer-distributed .footer-company-about span {
+            display: block;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .footer-distributed .footer-icons {
+            margin-top: 25px;
+        }
+
+        .footer-distributed .footer-icons a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            background-color: black;
+            border-radius: 2px;
+
+            font-size: 20px;
+            color: #ffffff;
+            text-align: center;
+            line-height: 35px;
+
+            margin-right: 3px;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 1750px) {
+
+            .menu {
+                flex-wrap: wrap;
+            }
+
+            ul {
+                flex-wrap: wrap;
+                height: 200px;
+                padding-right: 0;
+                justify-content: center;
+                margin-top: 75px;
+            }
+
+            li {
+                padding: 20px 75px;
+            }
+
+            .a {
+                font-size: 15px;
+            }
+
+            .m,
+            .and,
+            .d,
+            .h,
+            .o,
+            .t,
+            .e,
+            .l,
+            .s {
+                height: 45px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .m {
+                margin-left: 15px;
+            }
+
+            .h {
+                margin-left: 20px;
+            }
+
+            .button {
+                margin-top: 35px;
+                margin-bottom: 0;
+            }
+
+            .lista {
+                padding: 5px 5px 15px 140px
+            }
+
+            .footer-distributed {
+                font: bold 14px sans-serif;
+            }
+
+            .footer-distributed .footer-left,
+            .footer-distributed .footer-center,
+            .footer-distributed .footer-right {
+                display: block;
+                width: 100%;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+
+            .footer-distributed .footer-center i {
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu {
+                flex-wrap: wrap;
+            }
+
+            ul {
+                flex-wrap: wrap;
+                height: 450px;
+                padding-right: 0;
+                justify-content: center;
+            }
+
+            li {
+                padding: 20px 75px;
+            }
+
+            .a {
+                font-size: 15px;
+            }
+
+            .m,
+            .and,
+            .d,
+            .h,
+            .o,
+            .t,
+            .e,
+            .l,
+            .s {
+                height: 45px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .m {
+                margin-left: 15px;
+            }
+
+            .h {
+                margin-left: 20px;
+            }
+
+            .button {
+                margin-top: 35px;
+                margin-bottom: 0;
+            }
+
+            .lista {
+                height: 850px;
+                flex-wrap: nowrap;
+                padding: 5px 5px 15px 40px
+            }
+
+            .footer-distributed {
+                font: bold 14px sans-serif;
+            }
+
+            .footer-distributed .footer-left,
+            .footer-distributed .footer-center,
+            .footer-distributed .footer-right {
+                display: block;
+                width: 100%;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+
+            .footer-distributed .footer-center i {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav id="menu">
+            <div class="logo">
+                <a href="#"><img src="m.png" height="50px" class="m"></a>
+                <a href="#"></a><img src="&.png" height="50px" class="and"></a>
+                <a href="#"></a><img src="d.png" height="50px" class="d"></a>
+                <a href="#"></a><img src="h.png" height="25px" class="h"></a>
+                <a href="#"></a><img src="o.png" height="25px" class="o"></a>
+                <a href="#"><img src="t.png" height="25px" class="t"></a>
+                <a href="#"><img src="e.png" height="25px" class="e"></a>
+                <a href="#"><img src="l.png" height="25px" class="l"></a>
+                <a href="#"><img src="s.png" height="25px" class="s"></a>
+            </div>
+            <ul>
+                <li>
+                    <a
+                        href="file:///C:/Users/1daw3/Desktop/David%20Barberio/Practica%20Multimodular%20-%20WEB/Home.html">INFORMACIÓN
+                        GENERAL</a>
+                </li>
+
+                <li>
+                    <a
+                        href="file:///C:/Users/1daw3/Desktop/David%20Barberio/Practica%20Multimodular%20-%20WEB/Habitaciones.html">HABITACIONES</a>
+                </li>
+
+                <li>
+                    <a
+                        href="file:///C:/Users/1daw3/Desktop/David%20Barberio/Practica%20Multimodular%20-%20WEB/Restaurantes.html">RESTAURANTES</a>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">INSTALACIONES ▼</a>
+                    <ul class="dropdown-content">
+                        <li>
+                            <a
+                                href="file:///C:/Users/1daw3/Desktop/David%20Barberio/Practica%20Multimodular%20-%20WEB/Ocio.html">OCIO</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="file:///C:/Users/1daw3/Desktop/David%20Barberio/Practica%20Multimodular%20-%20WEB/Packs.html">PACKS</a>
+
+                <li>
+                    <a href="file:///C:/Users/1daw3/Desktop/David%20Barberio/Practica%20Multimodular%20-%20WEB/Contacto.html">CONTACTO</a>
+                </li>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="doblehabitacion.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="doblebaño.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="doblelavabo.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="doblevistas.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="dobleterraza.jpg" class="d-block w-100">
+                </div>
+            </div>
+        </div>
+
+        <div class="doble">
+            <div class="dobletexto">
+                Habitación Doble | Terraza con vistas al mar
+                <hr style="height: 2px; width: 35%; margin:left;margin-top:25px;color: black;">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, ab officiis. Assumenda sint, eaque ea
+                    fugit
+                    eius deserunt tenetur sapiente veritatis beatae laboriosam cumque ipsam ab illo. Aliquid, dolorum
+                    neque!
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat nam amet unde corrupti vero atque
+                    ex
+                    odio hic, eligendi aperiam! Neque pariatur obcaecati repellat sapiente aperiam facere labore
+                    asperiores
+                    perspiciatis!
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea dicta in reiciendis porro rem.
+                    Perferendis,
+                    ipsum! Illum at ducimus illo quos repellat, accusamus tempore nihil, repellendus iure, dolorem natus
+                    tempora!
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed expedita earum consequuntur,
+                    accusantium
+                    tenetur, minima qui voluptate, totam quo perferendis debitis repellat nulla. Similique vero omnis
+                    accusantium numquam nobis sed.
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat nam amet unde corrupti vero atque
+                    ex
+                    odio hic, eligendi aperiam! Neque pariatur obcaecati repellat sapiente aperiam facere labore
+                    asperiores
+                    perspiciatis!
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed expedita earum consequuntur,
+                    accusantium
+                    tenetur, minima qui voluptate, totam quo perferendis debitis repellat nulla. Similique vero omnis
+                    accusantium numquam nobis sed.
+                </p>
+            </div>
+        </div>
+
+        <div class="aspectos">Aspectos destacados de la habitación
+            <hr style="height: 2px; width: 15%; margin:auto;margin-top:35px;color: black;">
+            <div class="listaaspectos">
+                <ul class="lista">
+                    <li class="cba">⍟ Balcón o terraza vistas al mar</li>
+                    <li class="cba">⍟ Baño completo (bañera o ducha</li>
+                    <li class="cba">⍟ Secador de pelo</li>
+                    <li class="cba">⍟ Amenidades de baño</li>
+                    <li class="cba">⍟ Aire acondicionado</li>
+
+                    <li class="cba">⍟ TV con canales internacionales</li>
+                    <li class="cba">⍟ Cafa fuerte</li>
+                    <li class="cba">⍟ Wi-fi</li>
+                    <li class="cba">⍟ 2 botellas de agua de cortesía</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer class="footer-distributed">
+
+            <div class="footer-left">
+
+                <h3>M&D<span> Hotels</span></h3>
+
+                <p class="footer-links">
+                    <a href="file:///C:/Users/1daw3/Desktop/David%20Barberio/Practica%20Multimodular%20-%20WEB/Home.html#"
+                        class="link-1">Información General</a>
+
+                    <a
+                        href="file:///C:/Users/1daw3/Desktop/David%20Barberio/Practica%20Multimodular%20-%20WEB/Habitaciones.html#">Habitaciones</a>
+
+                    <a
+                        href="file:///C:/Users/1daw3/Desktop/David%20Barberio/Practica%20Multimodular%20-%20WEB/Restaurantes.html">Restaurantes</a>
+
+                    <a
+                        href="file:///C:/Users/1daw3/Desktop/David%20Barberio/Practica%20Multimodular%20-%20WEB/Ocio.html">Instalaciones</a>
+
+                    <a href="file:///C:/Users/1daw3/Desktop/David%20Barberio/Practica%20Multimodular%20-%20WEB/Packs.html">Packs</a>
+
+                    <a href="file:///C:/Users/1daw3/Desktop/David%20Barberio/Practica%20Multimodular%20-%20WEB/Contacto.html">Contacto</a>
+                </p>
+
+                <p class="footer-company-name">M&D Hotels © 2022</p>
+            </div>
+
+            <div class="footer-center">
+
+                <div>
+                    <i class="fa fa-map-marker"></i>
+                    <p><span>Plaiaundi, s/n, 20301</span> Irun, Guipuzcoa</p>
+                </div>
+
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <p>943 00 11 22</p>
+                </div>
+
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <p><a
+                            href="https://accounts.google.com/signin/v2/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&service=mail&sacu=1&rip=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin">mdhotels@gmail.com</a>
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="footer-right">
+
+                <p class="footer-company-about">
+                    <span>Acerca de nosotros</span>
+                    Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor
+                    lacus vehicula sit amet.
+                </p>
+
+                <div class="footer-icons">
+
+                    <a href="https://www.youtube.com/channel/UC6NH7kehRvApp8TaHFjepxw"><img src="youtube.png"
+                            height="auto" width="25px"><i class="fa fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/iesplaiaundibhi/?hl=es"><img src="instagram.png" height="auto"
+                            width="25px"><i class="fa fa-instagram"></i></a>
+                    <a href="https://twitter.com/iesplaiaundibhi"><img src="twitter.png" height="auto" width="25px"><i
+                            class="fa fa-twitter"></i></a>
+                    <a href="https://m.facebook.com/profile.php?id=110857338935512"><img src="facebook.png"
+                            height="auto" width="25px"><i class="fa fa-facebook"></i></a>
+
+                </div>
+
+            </div>
+
+        </footer>
+    </div>
+</body>
+
+</html>
