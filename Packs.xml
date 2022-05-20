@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="Packs.xsl"?>
 <packs>
-    <nombre></nombre>
-    <habitacion></habitacion>
-    <descripcion></descripcion>
-    <image></image>
+    <pack>
+        <nombre>Relax</nombre>
+        <habitacion>Suite Luxury</habitacion>
+        <descripcion>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</descripcion>
+        <image>relax.jpg</image>
+    </pack>
+    <pack>
+        <nombre>Aventura</nombre>
+        <habitacion>Habitación Doble</habitacion>
+        <descripcion>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</descripcion>
+        <image>aventura.jpg</image>
+    </pack>
+    <pack>
+        <nombre>Mágico</nombre>
+        <habitacion>Habitación Premium</habitacion>
+        <descripcion>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</descripcion>
+        <image>magico.jpg</image>
+    </pack>
 </packs>
